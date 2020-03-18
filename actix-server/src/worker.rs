@@ -81,7 +81,10 @@ impl WorkerClient {
     pub fn send(&self, msg: Conn) -> Result<(), Conn> {
         self.tx1
             .unbounded_send(WorkerCommand(msg))
-            .map_err(|msg| msg.into_inner().0)
+            .map_err(|msg| {
+                error!("Can not send socket to worker({}): {}", self.idx, msg);
+                msg.into_inner().0
+            })
     }
 
     pub fn available(&self) -> bool {

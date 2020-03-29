@@ -181,7 +181,7 @@ where
         <U as Encoder>::Error: std::fmt::Debug,
     {
         loop {
-            let this = self.as_mut().project();
+            let mut this = self.as_mut().project();
             match this.service.poll_ready(cx) {
                 Poll::Ready(Ok(_)) => {
                     let item = match this.framed.next_item(cx) {
@@ -278,7 +278,7 @@ where
 
     fn poll(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
         loop {
-            let this = self.as_mut().project();
+            let mut this = self.as_mut().project();
 
             return match this.state {
                 State::Processing => {

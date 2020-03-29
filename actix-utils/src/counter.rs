@@ -63,6 +63,7 @@ impl Drop for CounterGuard {
 impl CounterInner {
     fn inc(&self) {
         self.count.set(self.count.get() + 1);
+        log::trace!("inc count: {}", self.count.get());
     }
 
     fn dec(&self) {
@@ -71,6 +72,7 @@ impl CounterInner {
         if num == self.capacity {
             self.task.wake();
         }
+        log::trace!("dec count: {}", self.count.get());
     }
 
     fn available(&self, cx: &mut task::Context<'_>) -> bool {

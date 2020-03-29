@@ -17,10 +17,10 @@ name = "actix_testing"
 path = "src/lib.rs"
 
 [dependencies]
-actix-rt = { git = "https://github.com/clia/actix-net.git" }
-actix-macros = { git = "https://github.com/clia/actix-net.git" }
-actix-server = { git = "https://github.com/clia/actix-net.git" }
-actix-service = { git = "https://github.com/clia/actix-net.git" }
+actix-rt = "1.0.0"
+actix-macros = "0.1.0"
+actix-server = "1.0.0"
+actix-service = "1.0.0"
 
 log = "0.4"
 net2 = "0.2"

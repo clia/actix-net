@@ -16,8 +16,8 @@ name = "actix_rt"
 path = "src/lib.rs"
 
 [dependencies]
-actix-macros = { git = "https://github.com/clia/actix-net.git" }
-actix-threadpool = { git = "https://github.com/clia/actix-net.git" }
+actix-macros = "0.1.0"
+actix-threadpool = "0.3"
 futures-channel = { version = "0.3.4", default-features = false }
 futures-util = { version = "0.3.4", default-features = false, features = ["alloc"] }
 copyless = "0.1.4"

@@ -16,9 +16,9 @@ name = "actix_utils"
 path = "src/lib.rs"
 
 [dependencies]
-actix-service = "1.0.1"
-actix-rt = "1.0.0"
-actix-codec = "0.2.0"
+actix-service = { git = "https://github.com/clia/actix-net.git" }
+actix-rt = { git = "https://github.com/clia/actix-net.git" }
+actix-codec = { git = "https://github.com/clia/actix-net.git" }
 bitflags = "1.2"
 bytes = "0.5.3"
 either = "1.5.3"

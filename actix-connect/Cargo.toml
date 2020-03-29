@@ -54,4 +54,4 @@ webpki = { version = "0.21", optional = true }
 
 [dev-dependencies]
 bytes = "0.5.3"
-actix-testing = { git = "https://github.com/clia/actix-net.git" }
+actix-testing = { version="1.0.0" }

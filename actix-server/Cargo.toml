@@ -41,4 +41,4 @@ mio-uds = { version = "0.6.7" }
 [dev-dependencies]
 bytes = "0.5"
 env_logger = "0.7"
-actix-testing = { git = "https://github.com/clia/actix-net.git" }
+actix-testing = "1.0.0"

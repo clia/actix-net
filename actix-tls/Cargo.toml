@@ -32,10 +32,10 @@ rustls = ["rust-tls", "webpki", "webpki-roots", "tokio-rustls"]
 nativetls = ["native-tls", "tokio-tls"]
 
 [dependencies]
-actix-service = "1.0.0"
-actix-codec = "0.2.0"
-actix-utils = "1.0.0"
-actix-rt = "1.0.0"
+actix-service = { git = "https://github.com/clia/actix-net.git" }
+actix-codec = { git = "https://github.com/clia/actix-net.git" }
+actix-utils = { git = "https://github.com/clia/actix-net.git" }
+actix-rt = { git = "https://github.com/clia/actix-net.git" }
 derive_more = "0.99.2"
 either = "1.5.2"
 futures-util = { version = "0.3.4", default-features = false }
@@ -57,4 +57,4 @@ tokio-tls = { version="0.3", optional = true }
 
 [dev-dependencies]
 bytes = "0.5"
-actix-testing = { version="1.0.0" }
+actix-testing = { git = "https://github.com/clia/actix-net.git" }

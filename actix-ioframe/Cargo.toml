@@ -16,10 +16,10 @@ name = "actix_ioframe"
 path = "src/lib.rs"
 
 [dependencies]
-actix-service = { git = "https://github.com/clia/actix-net.git" }
-actix-codec = { git = "https://github.com/clia/actix-net.git" }
-actix-utils = { git = "https://github.com/clia/actix-net.git" }
-actix-rt = { git = "https://github.com/clia/actix-net.git" }
+actix-service = "1.0.1"
+actix-codec = "0.2.0"
+actix-utils = "1.0.4"
+actix-rt = "1.0.0"
 bytes = "0.5.3"
 either = "1.5.3"
 futures-sink = { version = "0.3.4", default-features = false }
@@ -28,6 +28,6 @@ pin-project = "0.4.6"
 log = "0.4"
 
 [dev-dependencies]
-actix-connect = { git = "https://github.com/clia/actix-net.git" }
-actix-testing = { git = "https://github.com/clia/actix-net.git" }
+actix-connect = "2.0.0-alpha.2"
+actix-testing = "1.0.0"
 futures-util = { version = "0.3.4", default-features = false }

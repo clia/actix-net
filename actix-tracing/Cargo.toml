@@ -16,11 +16,11 @@ name = "actix_tracing"
 path = "src/lib.rs"
 
 [dependencies]
-actix-service = { git = "https://github.com/clia/actix-net.git" }
+actix-service = "1.0.4"
 futures-util = { version = "0.3.4", default-features = false }
 tracing = "0.1"
 tracing-futures = "0.2"
 
 [dev_dependencies]
-actix-rt = { git = "https://github.com/clia/actix-net.git" }
+actix-rt = "1.0"
 slab = "0.4"

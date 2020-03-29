@@ -1,6 +1,6 @@
 [package]
 name = "actix-server"
-version = "1.0.3"
+version = "1.0.2"
 authors = ["Nikolay Kim <fafhrd91@gmail.com>"]
 description = "Actix server - General purpose tcp server"
 keywords = ["network", "framework", "async", "futures"]
@@ -24,7 +24,7 @@ default = []
 actix-service = "1.0.2"
 actix-rt = "1.0.0"
 actix-codec = "0.2.0"
-actix-utils = "1.0.6"
+actix-utils = { git = "https://github.com/clia/actix-net.git" }
 
 log = "0.4"
 num_cpus = "1.11"

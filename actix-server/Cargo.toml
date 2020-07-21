@@ -24,7 +24,7 @@ default = []
 actix-service = "1.0.2"
 actix-rt = "1.0.0"
 actix-codec = "0.2.0"
-actix-utils = { git = "https://github.com/clia/actix-net.git" }
+actix-utils = "1.0.4"
 
 log = "0.4"
 num_cpus = "1.11"

@@ -5,14 +5,14 @@ use std::{net, thread, time};
 use actix_server::Server;
 use actix_service::fn_service;
 use futures_util::future::{lazy, ok};
-use net2::TcpBuilder;
+use socket2::{Domain, Protocol, Socket, Type};
 
 fn unused_addr() -> net::SocketAddr {
     let addr: net::SocketAddr = "127.0.0.1:0".parse().unwrap();
-    let socket = TcpBuilder::new_v4().unwrap();
-    socket.bind(&addr).unwrap();
-    socket.reuse_address(true).unwrap();
-    let tcp = socket.to_tcp_listener().unwrap();
+    let socket = Socket::new(Domain::ipv4(), Type::stream(), Some(Protocol::tcp())).unwrap();
+    socket.bind(&addr.into()).unwrap();
+    socket.set_reuse_address(true).unwrap();
+    let tcp = socket.into_tcp_listener();
     tcp.local_addr().unwrap()
 }
 
@@ -83,12 +83,10 @@ fn test_start() {
             .backlog(100)
             .disable_signals()
             .bind("test", addr, move || {
-                fn_service(|io: TcpStream| {
-                    async move {
-                        let mut f = Framed::new(io, BytesCodec);
-                        f.send(Bytes::from_static(b"test")).await.unwrap();
-                        Ok::<_, ()>(())
-                    }
+                fn_service(|io: TcpStream| async move {
+                    let mut f = Framed::new(io, BytesCodec);
+                    f.send(Bytes::from_static(b"test")).await.unwrap();
+                    Ok::<_, ()>(())
                 })
             })
             .unwrap()

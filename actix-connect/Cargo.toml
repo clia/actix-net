@@ -1,6 +1,6 @@
 [package]
 name = "actix-connect"
-version = "2.0.0-alpha.2"
+version = "2.0.0-alpha.3"
 authors = ["Nikolay Kim <fafhrd91@gmail.com>"]
 description = "Actix connect - tcp connector service"
 keywords = ["network", "framework", "async", "futures"]
@@ -8,7 +8,7 @@ homepage = "https://actix.rs"
 repository = "https://github.com/actix/actix-net.git"
 documentation = "https://docs.rs/actix-connect/"
 categories = ["network-programming", "asynchronous"]
-license = "MIT/Apache-2.0"
+license = "MIT OR Apache-2.0"
 edition = "2018"
 
 [package.metadata.docs.rs]
@@ -48,8 +48,8 @@ open-ssl = { version="0.10", package = "openssl", optional = true }
 tokio-openssl = { version = "0.4.0", optional = true }
 
 # rustls
-rust-tls = { version = "0.17.0", package = "rustls", optional = true }
-tokio-rustls = { version = "0.13.0", optional = true }
+rust-tls = { version = "0.18.0", package = "rustls", optional = true }
+tokio-rustls = { version = "0.14.0", optional = true }
 webpki = { version = "0.21", optional = true }
 
 [dev-dependencies]

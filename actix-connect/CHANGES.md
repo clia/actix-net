@@ -1,5 +1,18 @@
 # Changes
 
+## [unreleased]
+
+### Changed
+
+* Update `rustls` dependency to 0.18
+* Update `tokio-rustls` dependency to 0.14
+
+## [2.0.0-alpha.3] - 2020-05-08
+
+### Fixed
+
+* Corrected spelling of `ConnectError::Unresolverd` to `ConnectError::Unresolved`
+
 ## [2.0.0-alpha.2] - 2020-03-08
 
 ### Changed

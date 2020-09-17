@@ -464,7 +464,7 @@ impl Future for Worker {
                                     continue;
                                 }
                                 Ok(false) => {
-                                    trace!("Worker is unavailable");
+                                    trace!("Worker {} is unavailable", self.idx);
                                     self.availability.set(false);
                                     self.state = WorkerState::Unavailable(vec![msg]);
                                 }

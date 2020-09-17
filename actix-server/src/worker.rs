@@ -129,6 +129,7 @@ impl WorkerAvailability {
 /// Worker accepts Socket objects via unbounded channel and starts stream
 /// processing.
 pub(crate) struct Worker {
+    idx: usize,
     rx: UnboundedReceiver<WorkerCommand>,
     rx2: UnboundedReceiver<StopCommand>,
     services: Vec<WorkerService>,
@@ -177,6 +178,7 @@ impl Worker {
             async move {
                 availability.set(false);
                 let mut wrk = MAX_CONNS_COUNTER.with(move |conns| Worker {
+                    idx,
                     rx,
                     rx2,
                     availability,
@@ -264,8 +266,8 @@ impl Worker {
                     Poll::Ready(Ok(_)) => {
                         if srv.status == WorkerServiceStatus::Unavailable {
                             trace!(
-                                "Service {:?} is available",
-                                self.factories[srv.factory].name(Token(idx))
+                                "Worker {} Service {:?} is available",
+                                self.idx, self.factories[srv.factory].name(Token(idx))
                             );
                             srv.status = WorkerServiceStatus::Available;
                         }
@@ -275,16 +277,16 @@ impl Worker {
 
                         if srv.status == WorkerServiceStatus::Available {
                             trace!(
-                                "Service {:?} is unavailable",
-                                self.factories[srv.factory].name(Token(idx))
+                                "Worker {} Service {:?} is unavailable",
+                                self.idx, self.factories[srv.factory].name(Token(idx))
                             );
                             srv.status = WorkerServiceStatus::Unavailable;
                         }
                     }
                     Poll::Ready(Err(_)) => {
                         error!(
-                            "Service {:?} readiness check returned error, restarting",
-                            self.factories[srv.factory].name(Token(idx))
+                            "Worker {} Service {:?} readiness check returned error, restarting",
+                            self.idx, self.factories[srv.factory].name(Token(idx))
                         );
                         failed = Some((Token(idx), srv.factory));
                         srv.status = WorkerServiceStatus::Failed;

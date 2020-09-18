@@ -450,7 +450,10 @@ impl Accept {
                     },
                     Ok(None) => return,
                     Err(ref e) if e.kind() == io::ErrorKind::WouldBlock => return,
-                    Err(ref e) if connection_error(e) => continue,
+                    Err(ref e) if connection_error(e) => {
+                        error!("connection_error: {:?}", e.kind());
+                        continue;
+                    },
                     Err(e) => {
                         error!("Error accepting connection: {}", e);
                         if let Err(err) = self.poll.deregister(&info.sock) {

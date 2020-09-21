@@ -232,7 +232,7 @@ impl Accept {
 
     fn poll(&mut self) {
         // Create storage for events
-        let mut events = mio::Events::with_capacity(1024);
+        let mut events = mio::Events::with_capacity(2048);
 
         loop {
             if let Err(err) = self.poll.poll(&mut events, None) {
